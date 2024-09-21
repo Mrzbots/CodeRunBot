@@ -1,15 +1,15 @@
-HOW_INLINE = """**Inline usage:**
-```@GoodCodeRunBot [language]
-[your code]```"""
+HOW_INLINE = """<b>Inline usage:</b>
+<pre>@GoodCodeRunBot [language]
+[your code]</pre>"""
 
-INLINE = """**Language:**
-```{}```
+INLINE = """<b>Language:</b>
+<pre>{}</pre>
 
 **Code:**
-```{}```
+<pre>{}</pre>
 
 **Output:**
-```{}```"""
+<pre>{}</pre>"""
 
 LANGS = """**Supported languages:**
 ```
