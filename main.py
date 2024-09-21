@@ -7,7 +7,7 @@ bot = Client("my_bot", api_id=27215224, api_hash="688ae67db37f0ae991c3ecb97d73ff
 async def run_code(client, message):
     lang, code = message.text.split(maxsplit=2)[1:]
     request = RunRequest(lang, code)
-    response = run_code(request)
+    response = run_code(request, message)
     if response.result == RESULT_SUCCESS:
         await message.reply(f"Output: {response}")
     elif response.result == RESULT_ERROR:
