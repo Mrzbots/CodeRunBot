@@ -17,13 +17,13 @@ async def langs(client, message):
     await message.reply_text(LANGS)
 
 @bot.on_inline_query()
-async def inline(client, inline_query):    
-    text = inline_query.query
+async def inline(client, query):    
+    text = query.query
     lang = text.split(maxsplit=1)[0]
     code = text.split(maxsplit=1)[1]
     request = RunRequest(lang, code)
     response = execute_code(request)
-    await inline_query.answer([
+    await query.answer([
         InlineQueryResultArticle(
             title="Run Code",
             description=f"Output: {response}",
