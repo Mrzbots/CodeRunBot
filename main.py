@@ -10,7 +10,7 @@ async def run_code_command(client, message):
     response = execute_code(request)   
     await message.reply(f"Output: {response}")
 
-@bot.on_inline_query(filters.regex(r"^(\w+)\s(.*)$"))
+@bot.on_inline_query()
 async def inline_run_code(client, inline_query):
     lang, code = inline_query.matches[0].group(1, 2)
     request = RunRequest(lang, code)
