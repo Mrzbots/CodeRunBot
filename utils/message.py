@@ -1,3 +1,9 @@
+HOW_INLINE = """**Inline usage:**
+```@GoodCodeRunBot [language]
+[your code]```"""
+
+INLINE = """**Language:**"""
+
 LANGS = """**Supported languages:**
 ```
 awk```
