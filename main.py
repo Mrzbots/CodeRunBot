@@ -41,7 +41,7 @@ async def inline(client, query):
         InlineQueryResultArticle(
             title="Output",
             description=f"{response}",
-            input_message_content=InputTextMessageContent(INLINE)
+            input_message_content=InputTextMessageContent(INLINE.formate(lang, code)
         )
     ])
 
