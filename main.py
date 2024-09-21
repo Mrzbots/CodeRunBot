@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from settings import *
+from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 
 bot = Client("my_bot", api_id=27215224, api_hash="688ae67db37f0ae991c3ecb97d73ff0a", bot_token="7851237202:AAEszK9R4Sr99thXEiQnFbV8K4nFu9Ksjew")
 
@@ -16,8 +17,20 @@ async def inline_run_code(client, inline_query):
         lang, code = inline_query.matches[0].group(1, 2)
         request = RunRequest(lang, code)
         response = execute_code(request)
-        await inline_query.answer([{"title": "Run Code", "description": f"Output: {response}", "message_text": f"Output: {response}"}])
+        await inline_query.answer([
+            InlineQueryResultArticle(
+                title="Run Code",
+                description=f"Output: {response}",
+                input_message_content=InputTextMessageContent(f"Output: {response}")
+            )
+        ])
     else:
-        await inline_query.answer([{"title": "Error", "description": "No matches found", "message_text": "No matches found"}])
+        await inline_query.answer([
+            InlineQueryResultArticle(
+                title="Error",
+                description="No matches found",
+                input_message_content=InputTextMessageContent("No matches found")
+            )
+        ])
         
 bot.run()
