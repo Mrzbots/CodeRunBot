@@ -16,7 +16,9 @@ async def inline_run_code(client, inline_query):
     text = inline_query.query
     print(text)
     lang = text[1]
+    print(lang)
     code = text[2]
+    print(code)
     request = RunRequest(lang, code)
     response = execute_code(request)
     await inline_query.answer([
