@@ -1,13 +1,8 @@
-import os
-import json
+from pymongo import MongoClient
 import requests
 import logging
-from pymongo import MongoClient
 
 logging.basicConfig(level=logging.INFO)
-
-auth_token = os.getenv("AUTH")
-auth_header = {"Authorization": auth_token} if auth_token else {}
 
 class RunRequest:
     def __init__(self, language: str, code: str, stdin: str):
@@ -25,19 +20,6 @@ result_success = "success"
 result_error = "error"
 result_unknown = "unknown"
 
-def get_languages() -> Tuple[List[str], str]:
-    try:
-        response = requests.get("https://emkc.org/api/v2/piston/runtimes", headers=auth_header)
-        response.raise_for_status()
-    except requests.RequestException as e:
-        logging.error(e)
-        return [], str(e)
-
-    languages_map = response.json()
-    language_set = {obj["Language"] for obj in languages_map}
-    languages = sorted(list(language_set))
-    return languages, ""
-
 def run_code(request: RunRequest) -> RunResponse:
     json_body = {
         "language": request.language,
@@ -46,7 +28,7 @@ def run_code(request: RunRequest) -> RunResponse:
         "stdin": request.stdin
     }
     try:
-        response = requests.post("https://emkc.org/api/v2/piston/execute", json=json_body, headers=auth_header)
+        response = requests.post("https://emkc.org/api/v2/piston/execute", json=json_body)
         response.raise_for_status()
     except requests.RequestException as e:
         logging.error(e)
@@ -60,7 +42,7 @@ def run_code(request: RunRequest) -> RunResponse:
         return RunResponse(result_error, error_message, "")
 
     data = response.json()
-    return RunResponse(result_success, data["Run"]["Output"], data["Compile"]["Output"])
+    return RunResponse(result_success, data["run"]["output"])
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["piston"]
