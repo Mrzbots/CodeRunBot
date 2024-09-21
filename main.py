@@ -14,6 +14,7 @@ async def run_code_command(client, message):
 @bot.on_inline_query()
 async def inline_run_code(client, inline_query):    
     text = inline_query.query
+    print(text)
     lang = text[1]
     code = text[2].strip()
     request = RunRequest(lang, code)
