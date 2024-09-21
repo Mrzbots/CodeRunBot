@@ -15,9 +15,9 @@ async def run_code_command(client, message):
 async def inline_run_code(client, inline_query):    
     text = inline_query.query
     print(text)
-    lang = text[1]
+    lang = text[0]
     print(lang)
-    code = text[2]
+    code = text[1:]
     print(code)
     request = RunRequest(lang, code)
     response = execute_code(request)
