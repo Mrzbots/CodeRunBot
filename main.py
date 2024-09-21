@@ -30,6 +30,4 @@ async def inline(client, query):
             input_message_content=InputTextMessageContent(f"Output: {response}")
         )
     ])
-    
-        
-bot.run()
+           
