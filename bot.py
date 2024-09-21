@@ -1,3 +1,8 @@
+import asyncio
 from main import bot
 
-bot.run()
+async def main():
+    await bot.start()
+    print(f"{bot.mention} working 🔥")
+
+asyncio.run(main())
