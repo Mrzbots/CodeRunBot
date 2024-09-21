@@ -2,7 +2,14 @@ HOW_INLINE = """**Inline usage:**
 ```@GoodCodeRunBot [language]
 [your code]```"""
 
-INLINE = """**Language:**"""
+INLINE = """**Language:**
+```{}```
+
+**Code:**
+```{}```
+
+**Output:**
+```{}```"""
 
 LANGS = """**Supported languages:**
 ```
