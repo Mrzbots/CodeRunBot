@@ -3,7 +3,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 class RunRequest:
-    def __init__(self, language: str, code: str, stdin: str):
+    def __init__(self, language: str, code: str):
         self.language = language
         self.code = code
          
