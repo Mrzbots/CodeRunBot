@@ -1,7 +1,5 @@
-from pyrogram.types import *
 from pyrogram import filters
 from settings import *
-from utils.message import *
 from pyrogram.types import *
 from main import bot
 
@@ -11,10 +9,6 @@ async def run(client, message):
     request = RunRequest(lang, code)
     response = execute_code(request)   
     await message.reply(f"Output: {response}")
-
-@bot.on_message(filters.command("langs"))
-async def langs(client, message):
-    await message.reply_text(LANGS)
 
 @bot.on_inline_query()
 async def inline(client, query):    
