@@ -11,7 +11,7 @@ result_success = "success"
 result_error = "error"
 result_unknown = "unknown"
 
-def run_code(request: RunRequest):
+def execute_code(request: RunRequest):
     json_body = {
         "language": request.language,
         "version": "*",
@@ -37,4 +37,3 @@ def run_code(request: RunRequest):
         return lol
     else:
         return result_success
-
