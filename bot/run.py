@@ -2,7 +2,7 @@ from pyrogram.types import *
 from pyrogram import filters
 from settings import *
 from utils.message import *
-from pyrogram.types import
+from pyrogram.types import *
 from main import bot
 
 @bot.on_message(filters.command("run"))
