@@ -22,29 +22,27 @@ async def langs(client, message):
     await message.reply_text(LANGS)
 
 @bot.on_inline_query()
-async def inline(client, query):    
+async def inline(client, query):
     text = query.query
-    lang = text.split(maxsplit=1)[0]
-    code = text.split(maxsplit=1)[1]
+    lang, code = text.split(maxsplit=1)
     request = RunRequest(lang, code)
     if not execute_code(request):
         await query.answer([
-        InlineQueryResultArticle(
-            title="Bad Query",
-            description="usage: @GoodCodeRunBot [language] [code]",
-            input_message_content=InputTextMessageContent(HOW_INLINE)
-        )
-    ])
-        
-    response = execute_code(request)
-    await query.answer([
-        InlineQueryResultArticle(
-            title="Output",
-            description=f"{response}",
-            input_message_content=InputTextMessageContent(INLINE.formate(lang, code, response)
-        )
-    ])
-
+            InlineQueryResultArticle(
+                title="Bad Query",
+                description="usage: @GoodCodeRunBot [language] [code]",
+                input_message_content=InputTextMessageContent(HOW_INLINE)
+            )
+        ])
+    else:
+        response = execute_code(request)
+        await query.answer([
+            InlineQueryResultArticle(
+                title="Output",
+                description=f"{response}",
+                input_message_content=InputTextMessageContent(INLINE.format(lang, code, response))
+            )
+        ])
 
 print("bot is working 🥰")
 bot.run()
