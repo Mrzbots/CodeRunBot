@@ -28,7 +28,7 @@ def run_code(request: RunRequest) -> RunResponse:
         "stdin": request.stdin
     }
     try:
-        response = requests.post("https://emkc.org/api/v2/piston/execute", json=json_body)
+        response = requests.post("https://horrid-api-yihb.onrender.com/execute", json=json_body)
         response.raise_for_status()
     except requests.RequestException as e:
         logging.error(e)
