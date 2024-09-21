@@ -6,7 +6,7 @@ bot = Client("my_bot", api_id=123456, api_hash="your_api_hash", bot_token="your_
 @bot.on_message(filters.command("run"))
 async def run_code(client, message):
     lang, code = message.text.split(maxsplit=2)[1:]
-    request = RunRequest(lang, code, "")
+    request = RunRequest(lang, code)
     response = run_code(request)
     if response.result == RESULT_SUCCESS:
         await message.reply(f"Output: {response.output}")
