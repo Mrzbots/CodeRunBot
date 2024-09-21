@@ -35,3 +35,7 @@ async def inline(client, query):
             input_message_content=InputTextMessageContent(f"Output: {response}")
         )
     ])
+
+
+print("bot is working 🥰")
+bot.run()
