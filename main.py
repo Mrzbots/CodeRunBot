@@ -27,12 +27,21 @@ async def inline(client, query):
     lang = text.split(maxsplit=1)[0]
     code = text.split(maxsplit=1)[1]
     request = RunRequest(lang, code)
+    if not execute_code(request):
+        await query.answer([
+        InlineQueryResultArticle(
+            title="Bad Query",
+            description="usage: @GoodCodeRunBot [language] [code]",
+            input_message_content=InputTextMessageContent(HOW_INLINE)
+        )
+    ])
+        
     response = execute_code(request)
     await query.answer([
         InlineQueryResultArticle(
-            title="Run Code",
-            description=f"Output: {response}",
-            input_message_content=InputTextMessageContent(f"Output: {response}")
+            title="Output",
+            description=f"{response}",
+            input_message_content=InputTextMessageContent(INLINE)
         )
     ])
 
