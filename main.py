@@ -13,8 +13,9 @@ async def run_code_command(client, message):
 
 @bot.on_inline_query()
 async def inline_run_code(client, inline_query):    
-    lang = inline_query.matches[0].group(1)
-    code = inline_query.matches[0].group(2)
+    text = inline_query.query.strip().lower()
+    lang = text.split()[1]
+    code = text.split(None, 2)[2].strip()
     request = RunRequest(lang, code)
     response = execute_code(request)
     await inline_query.answer([
