@@ -12,9 +12,12 @@ async def run_code_command(client, message):
 
 @bot.on_inline_query()
 async def inline_run_code(client, inline_query):
-    lang, code = inline_query.matches[0].group(1, 2)
-    request = RunRequest(lang, code)
-    response = execute_code(request)
-    await inline_query.answer([{"title": "Run Code", "description": f"Output: {response}", "message_text": f"Output: {response}"}])
-    
+    if inline_query.matches:
+        lang, code = inline_query.matches[0].group(1, 2)
+        request = RunRequest(lang, code)
+        response = execute_code(request)
+        await inline_query.answer([{"title": "Run Code", "description": f"Output: {response}", "message_text": f"Output: {response}"}])
+    else:
+        await inline_query.answer([{"title": "Error", "description": "No matches found", "message_text": "No matches found"}])
+        
 bot.run()
