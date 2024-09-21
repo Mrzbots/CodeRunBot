@@ -11,7 +11,7 @@ result_success = "success"
 result_error = "error"
 result_unknown = "unknown"
 
-def run_code(request: RunRequest) -> RunResponse:
+def run_code(request: RunRequest):
     json_body = {
         "language": request.language,
         "version": "*",
@@ -22,19 +22,19 @@ def run_code(request: RunRequest) -> RunResponse:
         response.raise_for_status()
     except requests.RequestException as e:
         logging.error(e)
-        return RunResponse(result_unknown, "", "")
+        return result_unknown, "", ""       
 
     if response.status_code != 200:
         error_message = response.json().get("message", "")
         if not error_message:
             logging.error(response.text)
-            return RunResponse(result_unknown, "", "")
-        return RunResponse(result_error, error_message, "")
+            return result_unknown, "", ""
+        return result_error, error_message, ""
 
     data = response.json()
     lol = data['run']['output']
     if lol.strip() != '':  
-        return RunResponse(lol)
+        return lol
     else:
-        return RunResponse(result_success)
+        return result_success
 
