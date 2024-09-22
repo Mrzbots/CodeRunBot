@@ -1,4 +1,10 @@
-HELP = """"**Usage:
+START = """**Hey! I'm Code Run Bot 👋 
+
+I can run code for you.
+If you don't know how to use me,
+just type /help command**"""
+
+HELP = """**Usage:
 
 /start - start the bot
 
