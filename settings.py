@@ -1,6 +1,4 @@
 import requests
-import logging
-logging.basicConfig(level=logging.INFO)
 
 class RunRequest:
     def __init__(self, language: str, code: str):
