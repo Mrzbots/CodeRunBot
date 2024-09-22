@@ -79,7 +79,7 @@ async def inline(client, query):
             InlineQueryResultArticle(
                 title="Unknown Language",
                 description="Unknown language",
-                input_message_content=InputTextMessageContent("<b>Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the <code>/langs</code>command</b>")
+                input_message_content=InputTextMessageContent("<b>Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the /langs command</b>")
             )
         ])
         
