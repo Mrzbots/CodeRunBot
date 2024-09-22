@@ -21,6 +21,10 @@ async def run(client, message):
 async def langs(client, message):
     await message.reply_text(LANGS)
 
+@bot.on_message(filters.command("help"))
+async def langs(client, message):
+    await message.reply_text(HELP)
+
 @bot.on_inline_query()
 async def inline(client, query):
     text = query.query
