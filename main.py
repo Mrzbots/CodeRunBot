@@ -20,7 +20,7 @@ async def run(client, message):
 @bot.on_message(filters.command("langs"))
 async def langs(client, message):
     await message.reply_text(LANGS)
-    
+
 @bot.on_inline_query()
 async def inline(client, query):
     text = query.query
@@ -63,7 +63,7 @@ async def inline(client, query):
     request = RunRequest(lang, code)
     response = execute_code(request)    
     
-    if response["run"]["output"]:
+    if 'run' in response and 'output' in response['run']:
         data = response["run"]["output"] 
         if data.strip() != '':  
             res = data
