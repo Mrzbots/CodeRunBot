@@ -4,7 +4,7 @@ I can run code for you.
 If you don't know how to use me,
 just type /help command**"""
 
-HELP = """**Usage:
+HELP = """<b>Usage:
 
 /start - start the bot
 
@@ -13,13 +13,18 @@ HELP = """**Usage:
 /run [language]
 [your code]
 
-/langs - list of supported languages.**"""
+/langs - list of supported languages.
+
+Inline Usage:
+
+<pre>@GoodCodeRunBot [language]
+[your code]</pre></b>"""
 
 HOW_INLINE = """<b>Inline usage:</b>
 <pre>@GoodCodeRunBot [language]
 [your code]</pre>"""
 
-INLINE = """<b>Language:</b>
+OUTPUT = """<b>Language:</b>
 <pre>{}</pre>
 
 <b>Version</b>
