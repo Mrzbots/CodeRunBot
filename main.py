@@ -10,6 +10,14 @@ logging.basicConfig(level=logging.INFO)
 
 bot = Client("bot", api_id=27215224, api_hash="688ae67db37f0ae991c3ecb97d73ff0a", bot_token="7851237202:AAEszK9R4Sr99thXEiQnFbV8K4nFu9Ksjew")
 
+def get_reply_markup(query):
+    buttons = [
+        [
+            InlineKeyboardButton('Run Code', switch_inline_query_current_chat=query)
+        ]
+    ]
+    return InlineKeyboardMarkup(buttons)
+
 @bot.on_message(filters.command("run"))
 async def run(client, message):
     if len(message.command) < 2:
@@ -22,13 +30,14 @@ async def run(client, message):
     lang, code = text_parts
     request = RunRequest(lang, code)
     response = execute_code(request)
+    reply_markup = get_reply_markup(text_parts)
     if 'run' in response and 'output' in response['run']:
         data = response["run"]["output"]
         if data.strip() != '':
             res = data
         else:
             res = result_success
-        await message.reply(INLINE.format(response["language"], response["version"], code, res))
+        await message.reply(INLINE.format(response["language"], response["version"], code, res), reply_markup=reply_markup)
     else:
         await message.reply(f"**Hey {message.from_user.mention}, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the /langs command**")
 
