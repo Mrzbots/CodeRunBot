@@ -61,14 +61,19 @@ async def inline(client, query):
         return
     
     request = RunRequest(lang, code)
-    response = execute_code(request)
+    response = execute_code(request)    
     
-    if response:
+    if response["run"]["output"]:
+        data = response["run"]["output"] 
+        if data.strip() != '':  
+            res = data
+        else:
+            res = result_success
         await query.answer([
             InlineQueryResultArticle(
                 title="Output",
-                description=f"{response}",
-                input_message_content=InputTextMessageContent(INLINE.format(lang, code, response))
+                description=f"{res}",
+                input_message_content=InputTextMessageContent(INLINE.format(response["language"], code, res))
             )
         ])
     else:
