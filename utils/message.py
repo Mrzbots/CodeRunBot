@@ -1,8 +1,13 @@
-HELP = """"**Usage:**
-```/run [language]
-[your code]```
+HELP = """"**Usage:
 
-type /langs for list of supported languages."""
+/start - start the bot
+
+/help - this message 
+
+/run [language]
+[your code]
+
+/langs - list of supported languages.**"""
 
 HOW_INLINE = """<b>Inline usage:</b>
 <pre>@GoodCodeRunBot [language]
@@ -11,10 +16,13 @@ HOW_INLINE = """<b>Inline usage:</b>
 INLINE = """<b>Language:</b>
 <pre>{}</pre>
 
-**Code:**
+<b>Version</b>
 <pre>{}</pre>
 
-**Output:**
+<b>Code:</b>
+<pre>{}</pre>
+
+<b>Output:</b>
 <pre>{}</pre>"""
 
 LANGS = """**Supported languages:**
