@@ -54,9 +54,8 @@ async def help(client, message):
 @bot.on_message(filters.command("start"))
 async def start(client, message):
     buttons = [
-        [
-            InlineKeyboardButton("Support Group", url="https://t.me/XBOTSUPPORTS")
-        ]
+        [InlineKeyboardButton("Support Group", url="https://t.me/XBOTSUPPORTS")],
+        [InlineKeyboardButton("Source Code", url="https://github.com/Tanjirotg/CodeRunBot")]
     ]
     await message.reply_text(START, reply_markup=InlineKeyboardMarkup(buttons))
     
