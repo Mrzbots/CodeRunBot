@@ -24,13 +24,14 @@ async def run(client, message):
         return await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
 
     text_parts = message.text.split(maxsplit=2)[1:]
+    query = " ".join(message.command[1:])  
     if len(text_parts) != 2:
         return await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
 
     lang, code = text_parts
     request = RunRequest(lang, code)
     response = execute_code(request)
-    reply_markup = get_reply_markup(text_parts)
+    reply_markup = get_reply_markup(query)
     if 'run' in response and 'output' in response['run']:
         data = response["run"]["output"]
         if data.strip() != '':
