@@ -1,3 +1,9 @@
+HELP = """"**Usage:**
+```/run [language]
+[your code]```
+
+type /langs for list of supported languages."""
+
 HOW_INLINE = """<b>Inline usage:</b>
 <pre>@GoodCodeRunBot [language]
 [your code]</pre>"""
