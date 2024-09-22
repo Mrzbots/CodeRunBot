@@ -26,4 +26,3 @@ The bot supports the following commands:
 * /run: Run the code you provide
 * /langs: View a list of supported programming languages
 * /help: Display help and usage information for the bot
-* 
