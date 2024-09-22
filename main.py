@@ -97,7 +97,8 @@ async def inline(client, query):
         return
     
     request = RunRequest(lang, code)
-    response = execute_code(request)    
+    response = execute_code(request)   
+    reply_markup = get_reply_markup(text)
     
     if 'run' in response and 'output' in response['run']:
         data = response["run"]["output"] 
@@ -109,6 +110,7 @@ async def inline(client, query):
             InlineQueryResultArticle(
                 title="Output",
                 description=f"{res}",
+                reply_markup=reply_markup,
                 input_message_content=InputTextMessageContent(INLINE.format(response["language"], response["version"], code, res))
             )
         ])
@@ -116,7 +118,7 @@ async def inline(client, query):
         await query.answer([
             InlineQueryResultArticle(
                 title="Unknown Language",
-                description="Unknown language",
+                description="Unknown language",              
                 input_message_content=InputTextMessageContent("Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the. /langs command")
             )
         ])
