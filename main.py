@@ -39,7 +39,7 @@ async def run(client, message):
             res = data
         else:
             res = result_success
-        await message.reply(INLINE.format(response["language"], response["version"], code, res), reply_markup=reply_markup)
+        await message.reply(OUTPUT.format(response["language"], response["version"], code, res), reply_markup=reply_markup)
     else:
         await message.reply(f"**Hey {message.from_user.mention}, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the /langs command**")
 
@@ -112,7 +112,7 @@ async def inline(client, query):
                 title="Output",
                 description=f"{res}",
                 reply_markup=reply_markup,
-                input_message_content=InputTextMessageContent(INLINE.format(response["language"], response["version"], code, res))
+                input_message_content=InputTextMessageContent(OUTPUT.format(response["language"], response["version"], code, res))
             )
         ])
     else:
