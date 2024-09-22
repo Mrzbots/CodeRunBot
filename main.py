@@ -12,10 +12,25 @@ bot = Client("bot", api_id=27215224, api_hash="688ae67db37f0ae991c3ecb97d73ff0a"
 
 @bot.on_message(filters.command("run"))
 async def run(client, message):
+    if len(message.command) < 2:
+        return await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
     lang, code = message.text.split(maxsplit=2)[1:]
+    if not lang:
+        await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
+    if not code:
+        await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
     request = RunRequest(lang, code)
-    response = execute_code(request)   
-    await message.reply(f"Output: {response}") 
+    response = execute_code(request)  
+    response = execute_code(request)        
+    if 'run' in response and 'output' in response['run']:
+        data = response["run"]["output"] 
+        if data.strip() != '':  
+            res = data
+        else:
+            res = result_success
+        await message.reply(INLINE.format(response["language"], response["version"], code, res)) 
+    else:
+        await message.reply("**Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the. /langs command**")
 
 @bot.on_message(filters.command("langs"))
 async def langs(client, message):
