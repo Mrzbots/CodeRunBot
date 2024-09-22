@@ -24,7 +24,7 @@ async def run(client, message):
         return await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
 
     text_parts = message.text.split(maxsplit=2)[1:]
-    query = " ".join(message.command[1:])  
+    query = ' '.join(text_parts)  
     if len(text_parts) != 2:
         return await message.reply_text(f"**Hey {message.from_user.mention},\n\nUsage: /run [language] [code]. If you want to see the list of supported languages, use /langs**")
 
