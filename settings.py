@@ -1,6 +1,6 @@
 import requests
 
-class RunRequest
+class RunRequest:
     def __init__(self, language: str, code: str):
         self.language = language
         self.code = code
