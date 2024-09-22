@@ -10,7 +10,7 @@ HELP = """<b>Usage:
 
 /help - this message 
 
-/run [language]
+/run - [language]
 [your code]
 
 /langs - list of supported languages.
