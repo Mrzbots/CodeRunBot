@@ -15,7 +15,7 @@ def execute_code(request: RunRequest):
     json_body = {
         "language": request.language,
         "version": "*",
-        "code": request.code,        
+        "code": request.code      
     }    
     response = requests.post("https://horrid-api-yihb.onrender.com/execute", json=json_body)               
     data = response.json()                     
