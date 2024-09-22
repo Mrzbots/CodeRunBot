@@ -30,7 +30,7 @@ async def run(client, message):
             res = result_success
         await message.reply(INLINE.format(response["language"], response["version"], code, res)) 
     else:
-        await message.reply("**Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the. /langs command**")
+        await message.reply(f"**Hey {message.from_user.mention}, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the. /langs command**")
 
 @bot.on_message(filters.command("langs"))
 async def langs(client, message):
