@@ -26,12 +26,11 @@ async def inline(client, query):
     text = query.query
     parts = text.split(maxsplit=1)
     
-    # Check if the input is in the correct format
     if len(parts) != 2:
         await query.answer([
             InlineQueryResultArticle(
                 title="Bad Query",
-                description="usage: @GoodCodeRunBot [language] [code]",
+                description="Usage: @GoodCodeRunBot [language] [code]",
                 input_message_content=InputTextMessageContent(HOW_INLINE)
             )
         ])
@@ -39,12 +38,11 @@ async def inline(client, query):
     
     lang, code = parts
     
-    # Check if language or code is empty
     if not lang:
         await query.answer([
             InlineQueryResultArticle(
                 title="Bad Query",
-                description="Please specify the programming language",
+                description="Usage: @GoodCodeRunBot [language] [code]",
                 input_message_content=InputTextMessageContent(HOW_INLINE)
             )
         ])
@@ -54,7 +52,7 @@ async def inline(client, query):
         await query.answer([
             InlineQueryResultArticle(
                 title="Bad Query",
-                description="Please provide the code to execute",
+                description="Usage: @GoodCodeRunBot [language] [code]",
                 input_message_content=InputTextMessageContent(HOW_INLINE)
             )
         ])
@@ -79,9 +77,9 @@ async def inline(client, query):
     else:
         await query.answer([
             InlineQueryResultArticle(
-                title="Failed to Execute Code",
-                description="Please check your code and try again",
-                input_message_content=InputTextMessageContent(HOW_INLINE)
+                title="Unknown Language",
+                description="Unknown language",
+                input_message_content=InputTextMessageContent("<b>Hey, your language is unknown. Maybe it's a spelling mistake? If you want to see the supported languages, use the <code>/langs</code>command</b>")
             )
         ])
         
