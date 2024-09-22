@@ -22,9 +22,18 @@ async def langs(client, message):
     await message.reply_text(LANGS)
 
 @bot.on_message(filters.command("help"))
-async def langs(client, message):
+async def help(client, message):
     await message.reply_text(HELP)
 
+@bot.on_message(filters.command("start"))
+async def start(client, message):
+    buttons = [
+        [
+            InlineKeyboardButton("Support Group", url="https://t.me/XBOTSUPPORTS")
+        ]
+    ]
+    await message.reply_text(START, reply_markup=InlineKeyboardMarkup(buttons))
+    
 @bot.on_inline_query()
 async def inline(client, query):
     text = query.query
@@ -75,7 +84,7 @@ async def inline(client, query):
             InlineQueryResultArticle(
                 title="Output",
                 description=f"{res}",
-                input_message_content=InputTextMessageContent(INLINE.format(response["language"], code, res))
+                input_message_content=InputTextMessageContent(INLINE.format(response["language"], response["version"], code, res))
             )
         ])
     else:
