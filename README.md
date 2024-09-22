@@ -17,8 +17,9 @@ To set up the bot, you'll need to provide the following variables:
 * API_HASH: Your Telegram API hash
 * BOT_TOKEN: Your bot token from the Telegram BotFather
 
-Available Commands
+Available Commands & Fectures 
 -
+inline supported 
 
 The bot supports the following commands:
 
@@ -26,3 +27,8 @@ The bot supports the following commands:
 * /run: Run the code you provide
 * /langs: View a list of supported programming languages
 * /help: Display help and usage information for the bot
+
+# Inline Usage:
+```
+@GoodCodeRunBot [language]
+[your code]```
