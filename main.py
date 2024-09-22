@@ -5,10 +5,11 @@ from settings import *
 from utils.message import *
 from pyrogram.types import *
 import logging
+from config import *
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Client("bot", api_id=27215224, api_hash="688ae67db37f0ae991c3ecb97d73ff0a", bot_token="7851237202:AAEszK9R4Sr99thXEiQnFbV8K4nFu9Ksjew")
+bot = Client("bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 def get_reply_markup(query):
     buttons = [
