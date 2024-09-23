@@ -55,7 +55,7 @@ async def help(client, message):
 async def start(client, message):
     buttons = [
         [InlineKeyboardButton("Support Group", url="https://t.me/XBOTSUPPORTS")],
-        [InlineKeyboardButton("Source Code", url="https://github.com/Tanjirotg/CodeRunBot")]
+        [InlineKeyboardButton("Source Code", url="https://github.com/Mrzbots/CodeRunBot")]
     ]
     await message.reply_text(START, reply_markup=InlineKeyboardMarkup(buttons))
     
