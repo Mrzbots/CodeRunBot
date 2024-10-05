@@ -6,15 +6,6 @@ from utils.message import *
 from pyrogram.types import *
 
 
-def get_reply_markup(query):
-    buttons = [
-        [
-            InlineKeyboardButton('Run Code', switch_inline_query_current_chat=query)
-        ]
-    ]
-    return InlineKeyboardMarkup(buttons)
-
-
 @Client.on_message(filters.command("langs"))
 async def langs(client, message):
     await message.reply_text(LANGS)
