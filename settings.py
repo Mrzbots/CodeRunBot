@@ -15,6 +15,6 @@ def execute_code(request: RunRequest):
         "version": "*",
         "code": request.code      
     }    
-    response = requests.post("https://horridapi.onrender.com/execute", json=json_body)               
+    response = requests.post("https://emkc.org/api/v2/piston/execute", json=json_body)               
     data = response.json()                     
     return data
