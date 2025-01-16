@@ -30,6 +30,6 @@ The bot supports the following commands:
 
 # Inline Usage:
 ```
-@GoodCodeRunBot [language]
+@{botusername} [language]
 [your code]
 ```
