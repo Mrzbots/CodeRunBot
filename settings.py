@@ -13,7 +13,7 @@ def execute_code(request: RunRequest):
     json_body = {
         "language": request.language,
         "version": "*",
-        "code": request.code      
+        "files": request.code      
     }    
     response = requests.post("https://emkc.org/api/v2/piston/execute", json=json_body)               
     data = response.json()                     
